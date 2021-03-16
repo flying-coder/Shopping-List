@@ -13,28 +13,18 @@ app.use(express.json());
 //ROUTE
 //
 
-//create shopping list
+//post an item
 app.post("/shoppinglist", async (req, res) => {
     console.log(req.body)
         const { item } = req.body;
         const newSL = await pool.query(
-            "INSERT INTO shoppinglist(item)",
+            "`INSERT INTO shoppinglist(item) VALUES('`${ item }')`",
             [item]
         ); 
         res.json(newSL);
-        
-
-    // try {
-        // const { item } = req.body;
-        // const newSL = await pool.query(
-        //     "INSERT INTO shoppinglist(item)",
-        //     [item]
-        // );
-        // res.json(newSL)    
-    // } catch (err) {
-    //     console.error(err.message);
-    // }
 });
+
+//get an item
 
 
 

@@ -1,4 +1,4 @@
-//データベースを使用するためのファイルです
+//データベースを使用するためのファイル
 
 const Pool = require("pg").Pool;
 
@@ -7,7 +7,9 @@ const pool = new Pool({
     host: "localhost",
     port : 5000,
     database: "shoppinglistdatabase",
-    idleTimeoutMillis: 0,
+    
+    //I wrote 2 lines below because I got error of server
+    idleTimeoutMillis: 0, 
     connectionTimeoutMillis: 0
 })
 
