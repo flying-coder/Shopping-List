@@ -10,22 +10,30 @@ app.use(cors());
 app.use(express.json());
 
 //
-//ROUTE-
+//ROUTE
 //
 
 //create shopping list
 app.post("/shoppinglist", async (req, res) => {
-    try {
-        const { description } = req.body;
+    console.log(req.body)
+        const { item } = req.body;
         const newSL = await pool.query(
-            "INSERT INTO shoppinglist (description) ",
-            [des]
-        );
+            "INSERT INTO shoppinglist(item)",
+            [item]
+        ); 
+        res.json(newSL);
+        
 
-    } catch (error) {
-        console.error(error.message);
-
-    }
+    // try {
+        // const { item } = req.body;
+        // const newSL = await pool.query(
+        //     "INSERT INTO shoppinglist(item)",
+        //     [item]
+        // );
+        // res.json(newSL)    
+    // } catch (err) {
+    //     console.error(err.message);
+    // }
 });
 
 
